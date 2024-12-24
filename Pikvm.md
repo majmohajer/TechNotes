@@ -1,15 +1,4 @@
-709 Water   
-107.223.191.120     
-
-913 Haybeck Ln  
-84.239.41.199    
-ATT   http://192.168.1.254/    Remote access port = my pin   Ahram
-
-913 Haybeck Ln       68.93.138.36            192.168.1.76
-Use https://www.yougetsignal.com/tools/open-ports/ to see if your 443 and 80 ports are open from outside
-
-> With AT&T if remote access is enabled, even though it is not on port  
-80/443, it blocks traffic. Disable it.
+[HOME](home.md)  
 
 ## Troubleshooting
 If device shows in your router under connected wifi device but local ip address

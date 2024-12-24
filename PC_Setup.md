@@ -1,3 +1,5 @@
+[HOME](home.md)  
+
 ## PC Setup Instructions
 
 - Install Git by downloading windows installer  

@@ -1,13 +1,104 @@
-### What is attribute routing?
-ASP.NET MVC5 and WEB API 2 supports a new type of routing, called attribute routing. In this routing, attributes are used to define routes. Attribute routing provides you more control over the URIs by defining routes directly on actions and controllers in your ASP.NET MVC application and WEB API
+[HOME](home.md)  
+
+## Nullable Annotations (nullable type ? and null-forgiving operator !)
+A nullable reference type is noted using the same syntax as nullable value types: a ? is appended to the type of the variable.    
+When nullable reference types are enabled, any variable where the ? isn't appended to the type name is a non-nullable reference type. That includes all reference type variables in existing code once you enable this feature. However, any implicitly typed local variables (declared using var) are nullable reference types.
+
+<br />
+Sometimes you must override a warning when you know a variable isn't null, but the compiler determines its null-state is maybe-null. You use the null-forgiving operator ! following a variable name to force the null-state to be not-null. For example, if you know the name variable isn't null but the compiler issues a warning, you can write the following code to override the compiler's analysis:    
+
+> name!.Length;
+
+The runtime behavior of a program making use of nullable annotations is the same if all the nullable annotations, (? and !), are removed. Their only purpose is expressing design intent and providing information for null state analysis.
+
+### Delegates
+There are three types:  Action, Funcs and Predicate.   
+Action delegate defines a method that can be called on arguments but does not return a result
+
+Func– A Func delegate defines a method that can be called on arguments and returns a result.   
+Func <int, string, bool> myDel is same as delegate bool myDel(int a, string b);   
+
+Predicate– Defines a method that can be called on arguments and always returns the bool.
+Predicate<string> myDel is same as delegate bool myDel(string s);
+
+### Desing Patterns
+**Mediator pattern** uses an intermediary class to communicate between classes of similar types. An example is different airplanes using a Control Tower to talk to each other.
 
 ### Any issue in regard to calling ToList() in a Linq query too early?
 .ToList() makes a query to materialize. Lazy loading or deferred execution are concerns to have in mind when deciding when to make that call.
 
 I was told by interviewer that sometimes the where clause does not work before the ToList call and it causes performance issue.
 
-### 
+## Web API
 
+### What is attribute routing?
+ASP.NET MVC5 and WEB API 2 supports a new type of routing, called attribute routing. In this routing, attributes are used to define routes. Attribute routing provides you more control over the URIs by defining routes directly on actions and controllers in your ASP.NET MVC application and WEB API
+
+### AllowAnonymous with Authorize
+ [AllowAnonymous] bypasses authorization statements. If you combine [AllowAnonymous] and an [Authorize] attribute, the [Authorize] attributes are ignored. For example if you apply [AllowAnonymous] at the controller level:
+
+Any authorization requirements from [Authorize] attributes on the same controller or action methods on the controller are ignored.
+Authentication middleware is not short-circuited but doesn't need to succeed.
+
+### How you limit access to a controller based on specific user criteria?
+You can create a Policy:
+Services.AddAuthorization(options =>
+    {
+        options.AddPolicy("MustHaveTheseAttributes", policy =>
+        {
+
+        }
+        );
+    });
+
+then specify the policy name with Authorize attribute for the controller
+[Authorize(Policy = "MustHaveTheseAttributes") ]
+
+### Action return types
+ASP.NET Core provides the following options for web API controller action return types:
+
+In Asp.Net MVC 5, ActionResult is an abstract class that drives from Object and represents the result of an action method.
+Derived Types:
+System.Web.Mvc.ContentResult
+System.Web.Mvc.EmptyResult
+System.Web.Mvc.FileResult
+System.Web.Mvc.HttpStatusCodeResult
+System.Web.Mvc.JavaScriptResult
+System.Web.Mvc.JsonResult
+System.Web.Mvc.RedirectResult
+System.Web.Mvc.RedirectToRouteResult
+System.Web.Mvc.ViewResultBase
+
+In Asp.Net Core, ActionResult is an abstract class that is the default implementation of IActionResult and its ExecuteResult(ActionContext) method is called by MVC.
+Derived Types:
+Microsoft.AspNetCore.Mvc.ChallengeResult
+Microsoft.AspNetCore.Mvc.ContentResult
+Microsoft.AspNetCore.Mvc.EmptyResult
+Microsoft.AspNetCore.Mvc.FileResult
+Microsoft.AspNetCore.Mvc.ForbidResult
+Microsoft.AspNetCore.Mvc.JsonResult
+Microsoft.AspNetCore.Mvc.LocalRedirectResult
+Microsoft.AspNetCore.Mvc.ObjectResult
+Microsoft.AspNetCore.Mvc.PartialViewResult
+Microsoft.AspNetCore.Mvc.RazorPages.PageResult
+Microsoft.AspNetCore.Mvc.RedirectResult
+Microsoft.AspNetCore.Mvc.RedirectToActionResult
+Microsoft.AspNetCore.Mvc.RedirectToPageResult
+Microsoft.AspNetCore.Mvc.RedirectToRouteResult
+Microsoft.AspNetCore.Mvc.SignInResult
+Microsoft.AspNetCore.Mvc.SignOutResult
+Microsoft.AspNetCore.Mvc.StatusCodeResult
+Microsoft.AspNetCore.Mvc.ViewComponentResult
+Microsoft.AspNetCore.Mvc.ViewResult
+
+
+
+Specific type
+IActionResult (Defines ExecuteResultAsync method that executes the result operation of the action method asynchronously. This method is called by MVC to process the result of an action method.)
+
+ActionResult<T>
+HttpResults
+ViewResult 
 
 ### WebAPI Interview
 -base class for a web api controller? ControllerBase Class
@@ -41,18 +132,7 @@ builder.Services.AddSingleton(Type serviceType) (single instance for application
 builder.Services.AddTransient (separate instance for each use)
 builder.Services.AddScoped<IMyDependency, MyDependency>();  (separate instance for life time of each request)
 
-### Delegates
-There are three types:  Action, Funcs and Predicate.   
-Action delegate defines a method that can be called on arguments but does not return a result
 
-Func– A Func delegate defines a method that can be called on arguments and returns a result.   
-Func <int, string, bool> myDel is same as delegate bool myDel(int a, string b);   
-
-Predicate– Defines a method that can be called on arguments and always returns the bool.
-Predicate<string> myDel is same as delegate bool myDel(string s);
-
-### Desing Patterns
-**Mediator pattern** uses an intermediary class to communicate between classes of similar types. An example is different airplanes using a Control Tower to talk to each other.
 
 ### Where you handle exceptions in a web api/web service?
 You can create an exception filter class that drives from ExceptionFilterAttribute and override OnException(ExceptionContext) or OnExceptionAsync(ExceptionContext) 
@@ -77,6 +157,44 @@ public class GlobalExceptionHandler: ExceptionHandler
         }
     }
 </pre>
+
+### User-Secrets vs appsettings.json
+Run this cmd in project folder:    dotnet user-secrets init
+
+WebApplication.CreateBuilder initializes a new instance of the WebApplicationBuilder class with preconfigured defaults. The initialized WebApplicationBuilder (builder) provides default configuration and calls AddUserSecrets when the EnvironmentName is Development.
+
+
+dotnet user-secrets set "Auth:JwtSecret" "ThisIsALocalJwtSecretKeyThatIsAtLeast256Bits"
+
+dotnet user-secrets set "Auth:MicroserviceAuthKey" "TempAuthKeyForLocalDevelopment"
+
+dotnet user-secrets set "ApplicationInsights:InstrumentationKey" "0d7e4812-5128-4c21-bf10-5d7fa0222733"
+
+
+dotnet user-secrets set "Database:PassCode" "asdfsadfsadfsa"
+
+dotnet user-secrets set "ServiceBus:PriceAuditTopic" "topic-priceaudit"
+dotnet user-secrets set "ServiceBus:PriceAudit_LogPriceAudit" "sub-priceaudit-logpriceaudit"
+
+
+Which one overrides the other?
+
+Do you need to first add appsettings.json to configuration builder like this:
+var builder = new ConfigurationBuilder()
+        .SetBasePath(env.ContentRootPath)
+        .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+
+
+
+### Can abstract Class have a constructor?
+Yes it can and this will be called before the constructor of derived class when instantiating a derived class.
+C# always calls the parameterless constructor of the parent class unless you use the base() to call the specific constructor of the parent class.
+
+base()
+The base keyword is used to access members of the base class from within a derived class. Use it if you want to:
+-Call a method on the base class that has been overridden by another method.
+-Specify which base-class constructor should be called when creating instances of the derived class.
+
 
 ### Quick Questions
 -Difference between String literals forms: raw, quoted, and verbatim.

@@ -1,5 +1,7 @@
+[HOME](home.md)  
 
 ### Resources
+- Read Angular Style Guide https://angular.dev/style-guide   
 - Check version compatibility https://angular.dev/reference/versions  
 - Check update issues:  https://angular.dev/update-guide  
 
@@ -11,8 +13,6 @@ Advanced Angular Forms    decodedfrontend.io
 Get 15%-OFF for Your next Course 💥  
 Save and use THANKS_FOR_PURCHASE code for next purchase  
 
-
-https://angular.io/guide/styleguide   
 
 Angular Reactive Forms by Jim Cooper  - Pluralsight  
 Angular CLI by John Papa @plural  
@@ -118,3 +118,12 @@ The vast majority of components should use a custom element name as their select
   ...
 })
 export class DropZone { }
+
+
+### Debugging
+
+Is there any difference between View Page Source when you right click in Chrome and source shown in Developer Tools?
+
+Developer tools shows source coud after js has modified it. View Page Source shows original html from server.
+
+ 
