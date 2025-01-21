@@ -1,4 +1,6 @@
 [HOME](home.md)  
+### Sql performance
+Check index usage statistics
 
 ## Nullable Annotations (nullable type ? and null-forgiving operator !)
 A nullable reference type is noted using the same syntax as nullable value types: a ? is appended to the type of the variable.    

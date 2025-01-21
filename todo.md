@@ -1,13 +1,34 @@
-.Net Core Demo WebAPI with security
-Angular Dynamic form renderer
+## Daily Todo:
+- Create an interface and then a component that instanciate an object using that interface and display it in UI
+https://v17.angular.io/tutorial/first-app/first-app-lesson-04
+
+- Routing forChild forRoot
+- ng generate library
+- The view encapsulation strategy to use in the new component.
+
+- Leanr ng generate sub-commands https://angular.dev/cli/generate
+
+## Learning Angular
+- asyncPipe is impure
+- Angular Dynamic form renderer
 Learn about OnActionExecutionAsync and how setting ActionExecutingContext.Result will short circuit it
 
-Linked File in VS https://jeremybytes.blogspot.com/2019/07/linking-files-in-visual-studio.html    
+
+
+
+## Learning .Net
+
+.Net Core Demo WebAPI with security
+
+
 
 https://youtube.com/shorts/PI4pKky9iQk?si=ge_nLQojGnFY-Eyc
 
 Solutions Architect Resume
 Setup meet with Amin for Architect role
+
+## Learn Miscelanous
+Linked File in VS https://jeremybytes.blogspot.com/2019/07/linking-files-in-visual-studio.html    
 
 Learn About SSH
 Displaying two laptop on one split screen

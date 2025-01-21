@@ -7,7 +7,9 @@
 - Install Visual Studio
 - Install Node
 - Install Angular CLI
+- Add Angular Language Service Extension for VS Code
 - Add Angular DevTools Chrome Extension
+- Add Material Icon Theme Extension for VS Code
 - Install Red gate Sql Search   
 
   

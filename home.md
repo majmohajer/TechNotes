@@ -1,8 +1,15 @@
+## HOME
+
+[ToDO](todo.md)  
 
 [Angular](angular.md)   
-[ToDO](todo.md)  
-[PIKVM](pikvm.md)  
+[Typescript](Typescript.md)
 [C#](c#.md)  
+
+[Tools](tools.md)  
+
 [PC Setup](PC_Setup.md)  
-[Typescript](typescript)
+[PIKVM](pikvm.md)  
+
+
 
