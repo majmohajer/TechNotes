@@ -233,3 +233,13 @@ https://youtu.be/o74WSoJxGPI?si=l-lO0dj4ElDfjxrs
 https://blog.angular-university.io/angular-advanced-course/   
 
 To update angular version go to https://update.angular.io/  
+
+
+
+
+How do you dynamically load components?
+Example of pipes
+Example of Guards   
+Hierachy of injectable calling
+
+Factory pattern C#
