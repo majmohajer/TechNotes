@@ -198,8 +198,14 @@ Is there any difference between View Page Source when you right click in Chrome 
 Developer tools shows source coud after js has modified it. View Page Source shows original html from server.
 
  ## Interview Questions
+ ### What is the difference between ContentChild and ViewChild?   
+ ### What is it used to store the return stuff from observable in a service?   
+ ### What are the interceptors?   
+ ### What is router-outlet?   
+
+
  ### What is the difference between code in constructor and in ngOnInit()?   
- Mostly we use ngOnInit for all the initialization/declaration and avoid stuff to work in the constructor. The constructor should only be used to initialize class members but shouldn't do actual "work".  
+  Mostly we use ngOnInit for all the initialization/declaration and avoid stuff to work in the constructor. The constructor should only be used to initialize class members but shouldn't do actual "work".  
 
 So you should use constructor() to setup Dependency Injection and not much else. ngOnInit() is better place to "start" - it's where/when components' bindings are resolved.   
 Important to note that @Input values are not accessible in the constructor.  

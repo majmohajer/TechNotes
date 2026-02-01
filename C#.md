@@ -137,9 +137,26 @@ builder.Services.AddScoped<IMyDependency, MyDependency>();  (separate instance f
 
 
 ### Where you handle exceptions in a web api/web service?
-You can create an exception filter class that drives from ExceptionFilterAttribute and override OnException(ExceptionContext) or OnExceptionAsync(ExceptionContext) 
+You use catch blocks when using HTTPClient and use Catch HttpResponseException but exception like 400 Bad Request do come back in body and not exception is thrown. 
+You need to add EnsurceSuccess() to get exception for bad requests thrown.
+<pre>
+    try
+    {
+        var response = _httpClient.GetAsync("api/businesses").Result;
+        if (!response.IsSuccessStatusCode) return null;
 
-You can use the exception filter once the controller action method throws an unhandled exception that is not an HttpResponseExeption
+        return response.Content.ReadAsStringAsync().Result;
+    }
+    catch (Exception e)
+    {
+        _logger.LogError(e, "Something went wrong while fetching data from external service");
+        return null;
+    }
+</pre>
+
+You can also create an exception filter class that drives from ExceptionFilterAttribute and override OnException(ExceptionContext) or OnExceptionAsync(ExceptionContext) 
+
+You can use the exception filter once the controller action method throws an unhandled exception that is not an HttpResponseException
 ---------------------------------------------
 In Web API 2 you can create a global handler and register it instead of default existing exception handler:
 <pre>
