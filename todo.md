@@ -13,7 +13,12 @@ https://v17.angular.io/tutorial/first-app/first-app-lesson-04
 - Angular Dynamic form renderer
 Learn about OnActionExecutionAsync and how setting ActionExecutingContext.Result will short circuit it
 
+## Functional Programming
+https://www.learnrxjs.io/
 
+https://fireship.dev/imperative-vs-declarative-programming
+
+https://reactivex.io/learnrx/
 
 
 ## Learning .Net
